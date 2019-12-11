@@ -1,7 +1,7 @@
 # Install-OpenCV-Jetson-TX2-GStreamer
 This guide will help you to build OpenCV (3.4.0) for Jetson TX2 (Ubuntu 18.04 - Python 3.6 - GStreamer Enabled).
 
-## Purging
+## Step 1: Purging
 ```
 $ sudo apt-get purge libopencv*
 $ sudo apt-get purge python-numpy
@@ -9,7 +9,7 @@ $ sudo apt autoremove
 $ sudo apt-get update
 $ sudo apt-get dist-upgrade
 ```
-## Install Dependencies
+## Step 2: Install Dependencies
 ```
 $ sudo apt-get install --only-upgrade g++-5 cpp-5 gcc-5
 $ sudo apt-get install build-essential make cmake cmake-curses-gui \
@@ -31,7 +31,7 @@ $ sudo apt-get install qt5-default
 $ sudo apt-get install python3-dev python3-pip python3-tk
 $ sudo apt-get install python-dev python-pip python-tk
 ```
-## Matplotlibrc
+## Step 3: Install Matplotlibrc
 ```
 $ sudo pip3 install numpy
 $ sudo pip3 install matplotlib
@@ -42,7 +42,7 @@ $ sudo nano /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotli
 ```
 Change matplotlibrc relevant line (~41) to 'backend      : TkAgg'
 
-## OpenGL
+## Step 4: Set OpenGL
 Now, we need to fix OpenGL compilation problems according to this: https://devtalk.nvidia.com/default/topic/1007290/jetson-tx2/building-opencv-with-opengl-support-/post/5141945/#5141945
 ```
 $ sudo nano /usr/local/cuda/include/cuda_gl_interop.h
@@ -61,7 +61,7 @@ Change cuda_gl_interop.h relevant line (~62-68) to look like this:
 $ cd /usr/lib/aarch64-linux-gnu/
 $ sudo ln -sf tegra/libGL.so libGL.so
 ````
-## Download OpenCV and Enable GStreamer
+## Step 5: Download OpenCV and Enable GStreamer
 ```
 $ cd ~
 $ wget https://github.com/opencv/opencv/archive/3.4.0.zip -O opencv-3.4.0.zip
